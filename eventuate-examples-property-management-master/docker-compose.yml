@@ -1,0 +1,26 @@
+redis:
+  extends:
+    file: docker-compose-common.yml
+    service: redis
+
+property:
+  extends:
+    file: docker-compose-common.yml
+    service: property
+  volumes:
+    - ./property-service/build/libs:/app
+  environment:
+    EVENTUATE_API_KEY_ID: ${EVENTUATE_API_KEY_ID}
+    EVENTUATE_API_KEY_SECRET: ${EVENTUATE_API_KEY_SECRET}
+
+propertyview:
+  extends:
+    file: docker-compose-common.yml
+    service: propertyview
+  volumes:
+    - ./property-view-service/build/libs:/app
+  links:
+    - redis
+  environment:
+    EVENTUATE_API_KEY_ID: ${EVENTUATE_API_KEY_ID}
+    EVENTUATE_API_KEY_SECRET: ${EVENTUATE_API_KEY_SECRET}

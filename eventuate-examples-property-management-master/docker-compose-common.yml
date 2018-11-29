@@ -1,0 +1,17 @@
+redis:
+  image: redis:2.8
+  hostname: redis
+  ports:
+    - "6379:6379"
+
+property:
+  build: ./property-service/
+  ports:
+    - "8081:8080"
+
+propertyview:
+  build: ./property-view-service/
+  ports:
+    - "8082:8080"
+  environment:
+    SPRING_REDIS_HOST: redis

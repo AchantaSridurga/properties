@@ -1,0 +1,10 @@
+include 'common-property'
+include 'common-web'
+include 'property-service'
+include 'property-view-service'
+include 'testutil'
+include 'common-tests'
+include 'property-integration-test'
+include 'e2e-test'
+include 'common-swagger'
+
